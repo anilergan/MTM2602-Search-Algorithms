@@ -5,7 +5,12 @@ class Searching:
     def __init__(self, maze):
 
         self.MAZE = maze
+
+        #CLOCKWISE
         self.ACTIONS = ('UP', 'RIGHT', 'DOWN', 'LEFT')
+
+        # # COUNTERCLOCKWISE
+        # self.ACTIONS = ('UP', 'LEFT', 'DOWN', 'RIGHT')
 
         # Row and Column Limit of Maze (ML -> Maze Limit)
         self.ML  = (self.MAZE.shape[0], self.MAZE.shape[1])
@@ -26,53 +31,27 @@ class Searching:
         self.explore_set = set()
 
         self.epoch = 0
+
+        # Every sinlge node has ever created through execution time.
+        self.node_created = 1
+
+
+
+    # def move(self, action, value):
+    #     if action == 'UP': return 0, tuple(range(-1, (-value-1), -1))
+    #     elif action == 'RIGHT': return 1, tuple(range(1, value+1))
+    #     elif action == 'DOWN': return 0, tuple(range(1, value+1))
+    #     elif action == 'LEFT': return 1, tuple(range(-1, (-value-1), -1))
     
+
 
     def move(self, action, value):
-        if action == 'UP': return 0, tuple(range(-1, (-value-1), -1))
-        elif action == 'RIGHT': return 1, tuple(range(1, value+1))
-        elif action == 'DOWN': return 0, tuple(range(1, value+1))
-        elif action == 'LEFT': return 1, tuple(range(-1, (-value-1), -1))
+        if action == 'UP': return 0, tuple([-value])
+        elif action == 'RIGHT': return 1, tuple([value])
+        elif action == 'DOWN': return 0, tuple([value])
+        elif action == 'LEFT': return 1, tuple([-value])
+
     
-    
-
-    def train(self):
-        
-        algorithm_name = self.__class__.__name__.replace('_', ' ')
-
-        start = time()
-        while True:
-            self.epoch += 1
-            self.update_frontiers(self.epoch)
-            
-            # Check Failure
-            if self.frontiers == []:
-                print("\n", "~~"*15, "A Failure Detected!", "~~"*15)
-                return 
-            
-            if self.MAZE[tuple(self.frontiers[0])] == -1:
-                break 
-            else:
-                self.agent = tuple(self.frontiers[0])
-                self.value = self.MAZE[self.agent]
-        
-        print('SOLUTION: ', self.path[0])
-        if algorithm_name == 'Iterative Deepening Search':
-            print('Solution was found when limit had adjusted as', self.limit)
-
-        end = time()
-
-        duration = end - start
-        min = int(duration / 60)
-        sec = round((duration % 60), 8)
-
-        if min >= 1:
-            print('\n', algorithm_name, f'is done.\n => Execution time: {min} min {sec} sec')
-        
-        else: 
-            print('\n', algorithm_name, f'is done.\n => Execution time: {sec} sec')
-
-
             
     def frontier_elimination(self, nf, acts, dir):
 
@@ -160,3 +139,44 @@ class Searching:
             cost += abs(sum(new_path[i+1]) - sum(new_path[i]))
             
         return cost
+    
+
+
+    
+    def train(self):
+        
+        algorithm_name = self.__class__.__name__.replace('_', ' ')
+
+        start = time()
+        while True:
+            self.epoch += 1
+            self.update_frontiers(self.epoch)
+            
+            # Check Failure
+            if self.frontiers == []:
+                print("\n", "~~"*15, "A Failure Detected!", "~~"*15)
+                return 
+            
+            if self.MAZE[tuple(self.frontiers[0])] == -1:
+                break 
+            else:
+                self.agent = tuple(self.frontiers[0])
+                self.value = self.MAZE[self.agent]
+        
+        print('SOLUTION: ', self.path[0])
+        if algorithm_name == 'Iterative Deepening Search':
+            print('Solution was found when limit had adjusted as', self.limit)
+
+        end = time()
+
+        duration = end - start
+        min = int(duration / 60)
+        sec = round((duration % 60), 8)
+
+        if min >= 1:
+            print('\n', algorithm_name, f'is done.\n => Execution time: {min} min {sec} sec')
+        
+        else: 
+            print('\n', algorithm_name, f'is done.\n => Execution time: {sec} sec')
+        
+        print(" => Number of node created through execution:", self.node_created)

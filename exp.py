@@ -50,20 +50,16 @@ for index, p in enumerate(path):
 
 from numpy import array as arr
 
-w = arr([[1,2,3], [4,5,6], [7,8,9]])
+test1 = 0.1799047
+test2 = 0.30217052
+test3 = 0.17437959
+test4 = 0.24337745
+test5 = 0.28180456
 
-u = [1,2,3]
-i = 10
-
-listem = []
-
-listem.append((tuple(u), i))
-
+ortalama = (test1 + test2 + test3 + test4 + test5) / 5
 
 
-print(listem)
-
-# print(u)
+print(round(ortalama, 5))
 
 
 

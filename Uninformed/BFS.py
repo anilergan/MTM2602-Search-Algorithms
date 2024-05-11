@@ -23,13 +23,14 @@ class Breadth_First_Search(Searching):
 
         self.frontiers += new_frontiers
         
+        # Update the node number has ever created
+        self.node_created += len(new_frontiers)
 
         self.update_path(new_frontiers)
 
         print('   -> Frontiers:', self.frontiers)
         # print('   -> Path: ', self.path)
         
-
     
     def update_path(self, childern):
         if self.path[0] == (0,0): #Root
@@ -52,6 +53,3 @@ class Breadth_First_Search(Searching):
             
             self.path += new_paths
         
-
-
-

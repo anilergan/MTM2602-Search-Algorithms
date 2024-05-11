@@ -5,7 +5,7 @@ class Depth_First_Search(Searching):
     def __init__(self, maze):
         super().__init__(maze)
 
-        
+
     def update_frontiers(self, epoch):
         print('\nEpoch:', epoch, '-'*70)
 
@@ -23,6 +23,8 @@ class Depth_First_Search(Searching):
 
         self.frontiers = new_frontiers + self.frontiers 
         
+        # Update the number of node has ever created so far
+        self.node_created += len(new_frontiers)
 
         self.update_path(new_frontiers)
 

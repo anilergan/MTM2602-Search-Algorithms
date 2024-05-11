@@ -25,7 +25,9 @@ class A_Star(Searching):
 
         self.frontiers += new_frontiers
         
-
+        # Update the number of node has ever created so far
+        self.node_created += len(new_frontiers)
+        
         self.update_path(new_frontiers)
         
         self.sort_paths_and_frontiers()

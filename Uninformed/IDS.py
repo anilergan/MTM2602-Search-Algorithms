@@ -23,6 +23,10 @@ class Iterative_Deepening_Search(Searching):
                 dir, acts = self.move(action, self.value)
                 new_frontiers = self.frontier_elimination(new_frontiers, acts, dir)
             self.frontiers = new_frontiers + self.frontiers 
+
+            # Update the number of node has ever created so far
+            self.node_created += len(new_frontiers)
+            
             self.update_path(new_frontiers)
         
         else: 

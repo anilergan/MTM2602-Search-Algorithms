@@ -8,7 +8,6 @@ class Depth_Limited_Search(Searching):
 
     def update_frontiers(self, epoch):
         print('\nEpoch:', epoch, '-'*70)
-        # print('~~> Depth:', len(self.path[0]) - 1)
 
         print(f'   -> {tuple(self.frontiers[0])} will be popped.')   
         self.frontiers.pop(0)
@@ -22,6 +21,10 @@ class Depth_Limited_Search(Searching):
                 dir, acts = self.move(action, self.value)
                 new_frontiers = self.frontier_elimination(new_frontiers, acts, dir)
             self.frontiers = new_frontiers + self.frontiers 
+
+            # Update the number of node has ever created so far
+            self.node_created += len(new_frontiers)
+            
             self.update_path(new_frontiers)
         
         else: 
