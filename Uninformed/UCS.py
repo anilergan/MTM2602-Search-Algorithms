@@ -64,7 +64,6 @@ class Uniform_Cost_Search(Searching):
 
 
     def sort_paths_and_frontiers(self):
-
         self.path = sorted(self.path, key=lambda x: x[1])
         
         self.frontiers = []

@@ -1,0 +1,1 @@
+Proje raporu, Files klasör dizinin altında yer almaktadır. Kod ilgili programlama dilinin (C) düzenlenmesi ile değil, sıfırdan farklı bir programlama dili (Python) ile oluşturulmuştur. Bu sebeple ilgili kodun proje raporu ile birlikte paylaşılması uygun görülmüştür. Kodun daha detaylı açıklaması, projenin sunumu esnasında ayrıca yapılacaktır. 

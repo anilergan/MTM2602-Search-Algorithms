@@ -20,6 +20,7 @@ class Depth_Limited_Search(Searching):
             for action in self.ACTIONS:
                 dir, acts = self.move(action, self.value)
                 new_frontiers = self.frontier_elimination(new_frontiers, acts, dir)
+                
             self.frontiers = new_frontiers + self.frontiers 
 
             # Update the number of node has ever created so far

@@ -106,11 +106,17 @@ MAZE_XL2 = array([
     [0,3,2,4,1,2,3,1,0,1,1,1,3,0,1,1,3,4,0,0,0,1,2,-1],
 ])
 
-model = BFS(MAZE_M)
-# model= UCS(MAZE_M)
-# model = DFS(MAZE_M)
-# model = DLS(MAZE_M, limit=30)
-# # # model = IDS(MAZE_M)
+SLIDE_MAZE = array([
+    [2,1,2,1,1],
+    [1,0,1,0,0],
+    [3,1,1,1,-1]
+])
+
+model = BFS(SLIDE_MAZE)
+model= UCS(MAZE_M)
+# model = DFS(SLIDE_MAZE)
+# model = DLS(MAZE_M, limit=4)
+# model = IDS(MAZE_L)
 
 # model = GBFS(MAZE_M)
 # model = AStar(MAZE_M)

@@ -37,19 +37,19 @@ class Searching:
 
 
 
-    # def move(self, action, value):
-    #     if action == 'UP': return 0, tuple(range(-1, (-value-1), -1))
-    #     elif action == 'RIGHT': return 1, tuple(range(1, value+1))
-    #     elif action == 'DOWN': return 0, tuple(range(1, value+1))
-    #     elif action == 'LEFT': return 1, tuple(range(-1, (-value-1), -1))
+    def move(self, action, value):
+        if action == 'UP': return 0, tuple(range(-1, (-value-1), -1))
+        elif action == 'RIGHT': return 1, tuple(range(1, value+1))
+        elif action == 'DOWN': return 0, tuple(range(1, value+1))
+        elif action == 'LEFT': return 1, tuple(range(-1, (-value-1), -1))
     
 
 
-    def move(self, action, value):
-        if action == 'UP': return 0, tuple([-value])
-        elif action == 'RIGHT': return 1, tuple([value])
-        elif action == 'DOWN': return 0, tuple([value])
-        elif action == 'LEFT': return 1, tuple([-value])
+    # def move(self, action, value):
+    #     if action == 'UP': return 0, tuple([-value])
+    #     elif action == 'RIGHT': return 1, tuple([value])
+    #     elif action == 'DOWN': return 0, tuple([value])
+    #     elif action == 'LEFT': return 1, tuple([-value])
 
     
             
@@ -121,7 +121,7 @@ class Searching:
         return tuple(path)
                 
 
-
+    # h(x)
     def straight_line_distance(self, state):
         a = (self.MAZE.shape[0] - 1) - state[0]
         b = (self.MAZE.shape[1] - 1) - state[1]
@@ -130,8 +130,7 @@ class Searching:
 
         return round(c, 2)
 
-
-
+    # g(x)
     def path_cost(self, new_path):
 
         cost = 0
@@ -163,7 +162,7 @@ class Searching:
                 self.agent = tuple(self.frontiers[0])
                 self.value = self.MAZE[self.agent]
         
-        print('SOLUTION: ', self.path[0])
+        print('\nSOLUTION: ', self.path[0])
         if algorithm_name == 'Iterative Deepening Search':
             print('Solution was found when limit had adjusted as', self.limit)
 
@@ -180,3 +179,4 @@ class Searching:
             print('\n', algorithm_name, f'is done.\n => Execution time: {sec} sec')
         
         print(" => Number of node created through execution:", self.node_created)
+        print('\n')
